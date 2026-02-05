@@ -41,7 +41,6 @@ namespace WebServer.Server.HTTP_Request
             catch (Exception)
             {
                 throw new InvalidOperationException($"Method '{method}' is not supportrd");
-
             }
         }
         private static HeaderCollection ParseHeaders(IEnumerable<string> headerLines)

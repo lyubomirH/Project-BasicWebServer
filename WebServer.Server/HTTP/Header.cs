@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using WebServer.Server.Common;
 
 namespace WebServer.Server.HTTP_Request
 {
@@ -8,6 +9,8 @@ namespace WebServer.Server.HTTP_Request
     {
         public Header(string name, string value)
         {
+            Guard.AgainstNull(name, nameof(name));
+            Guard.AgainstNull(value, nameof(value));
 
             this.Name = name;
             this.Value = value;
