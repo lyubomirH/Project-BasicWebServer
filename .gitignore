@@ -14,6 +14,10 @@
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs
 
+# Ignore Properties folders in .NET projects
+**/Properties/
+**/Properties/**/*
+
 # Mono auto generated files
 mono_crash.*
 

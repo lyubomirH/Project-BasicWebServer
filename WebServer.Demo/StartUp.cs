@@ -1,13 +1,13 @@
 ﻿using WebServer.Server;
 
 namespace WebServer.demo
-{
-    internal class StartUp
+{ 
+    public class StartUp
     {
-        static void Main(string[] args)
+        static void Main()
         {
-            var server = new HttpServer("127.0.0.1", 8080);
-            server.Start();
+            //var server = new HttpServer("127.0.0.1", 8080);
+            //server.Start();
             
         }
     }
