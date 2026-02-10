@@ -12,30 +12,48 @@ namespace WebServer.Server.HTTP
     public class RoutingTable : IRoutingTable
     {
         private readonly Dictionary<Method, Dictionary<string, Response>> routes;
-        public RoutingTable() =>
-            this.routes = new Dictionary<Method, Dictionary<string, Response>>
+        public RoutingTable()
+        {
+            routes = new Dictionary<Method, Dictionary<string, Response>>
             {
                 [Method.Get] = new Dictionary<string, Response>(),
                 [Method.Post] = new Dictionary<string, Response>(),
                 [Method.Put] = new Dictionary<string, Response>(),
                 [Method.Delete] = new Dictionary<string, Response>()
             };
-        //public RoutingTable() => this.routes = new()
+        }
+        //public RoutingTable()
         //{
-        //    [Method.Get] = new(),
-        //    [Method.Post] = new(),
-        //    [Method.Put] = new(),
-        //    [Method.Delete] = new()
-        //};                                //Алтернатива
+        //    this.routes = new()
+        //    {
+        //        [Method.Get] = new(),
+        //        [Method.Post] = new(),
+        //        [Method.Put] = new(),
+        //        [Method.Delete] = new()
+        //    };
+        //}                                //Алтернатива
 
         public IRoutingTable Map(string url, Method method, Response response)
-            => method switch
+        //=> method switch
+        //{
+        //    Method.Get => this.MapGet(url, response),
+        //    Method.Post => this.MapPost(url, response),
+        //    _ => throw new InvalidOperationException(
+        //         $"Method '{method}' is not supported.")
+        {
+            switch (method) 
             {
-                Method.Get => this.MapGet(url, response),
-                Method.Post => this.MapPost(url, response),
-                _ => throw new InvalidOperationException(
-                     $"Method '{method}' is not supported.")
-        };
+                case Method.Get:
+                    return MapGet(url, response);
+                    break;
+                case Method.Post: 
+                    return MapPost(url, response); 
+                    break;
+                default:
+                    throw new InvalidOperationException($"Method '{method}' is not supported.");
+            }
+
+        }
 
         public IRoutingTable MapGet(string url, Response response)
         {
