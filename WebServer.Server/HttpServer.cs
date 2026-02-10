@@ -36,21 +36,21 @@ namespace WebServer.Server
                 
             }
         }
-        private void WriteResponse(NetworkStream networkStream, string message)
-        {
+//        private void WriteResponse(NetworkStream networkStream, string message)
+//        {
 
-            var contentLength = Encoding.UTF8.GetByteCount(message);
+//            var contentLength = Encoding.UTF8.GetByteCount(message);
 
-            var response = $@"HTTP/1.1 200 OK
-Content-Type: text/plain; charset=UTF-8
-Content-Length: {contentLength}
+//            var response = $@"HTTP/1.1 200 OK
+//Content-Type: text/plain; charset=UTF-8
+//Content-Length: {contentLength}
 
-{message}";
+//{message}";
 
-            var resposeBytes = Encoding.UTF8.GetBytes(response);
+//            var resposeBytes = Encoding.UTF8.GetBytes(response);
 
-            networkStream.Write(resposeBytes);
-        }
+//            networkStream.Write(resposeBytes);
+//        }
 
         private string ReadRequest(NetworkStream networkStream)
         {
