@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using WebServer.Server.HTTP_Request;
 
-namespace WebServer.Server.HTTP
+namespace WebServer.Server.Contracts
 {
     public interface IRoutingTable
     {
