@@ -45,10 +45,8 @@ namespace WebServer.Server.HTTP
             {
                 case Method.Get:
                     return MapGet(url, response);
-                    break;
                 case Method.Post: 
                     return MapPost(url, response); 
-                    break;
                 default:
                     throw new InvalidOperationException($"Method '{method}' is not supported.");
             }
