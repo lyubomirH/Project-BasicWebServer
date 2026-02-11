@@ -76,12 +76,12 @@ namespace WebServer.Server.HTTP
             var requestMethod = request.Method;
             var requestUrl = request.Url;
 
-            if (!this.routes.ContainsKey(requestMethod)
-                || !this.routes[requestMethod].ContainsKey(requestUrl))
+            if (!routes.ContainsKey(requestMethod)
+                || !routes[requestMethod].ContainsKey(requestUrl))
             {
                 return new NotFoundResponse();
             }
-            return this.routes[requestMethod][requestUrl];
+            return routes[requestMethod][requestUrl];
         }
     }
 }

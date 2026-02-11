@@ -17,5 +17,20 @@ namespace WebServer.Server.HTTP_Request
             this.Headers.Add(Header.Server, "My Web Server");
             this.Headers.Add(Header.Data, $"{DateTime.UtcNow:r}");
         }
+        public override string ToString()
+        {
+            var result = new StringBuilder();
+            result.AppendLine($"HTTP/1.1 {(int)this.StatusCode} {this.StatusCode}");
+            foreach (var header in this.Headers)
+            {
+                result.AppendLine(header.ToString());
+            }
+            result.AppendLine();
+            if (!string.IsNullOrEmpty(this.Body))
+            {
+                result.AppendLine(this.Body);
+            }
+            return result.ToString();
+        }
     }
 }
