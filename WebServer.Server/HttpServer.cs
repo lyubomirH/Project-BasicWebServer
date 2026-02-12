@@ -56,8 +56,8 @@ namespace WebServer.Server
         }
         private void WriteResponse(NetworkStream networkStream, Response response)
         {
-            var resposeBytes = Encoding.UTF8.GetBytes(response.ToString());
-            networkStream.Write(resposeBytes);
+            var responseBytes = Encoding.UTF8.GetBytes(response.ToString());
+            networkStream.Write(responseBytes);
         }
 
         private string ReadRequest(NetworkStream networkStream)
