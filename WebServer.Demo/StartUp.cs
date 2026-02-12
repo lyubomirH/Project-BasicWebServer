@@ -2,7 +2,7 @@
 using WebServer.Server.Responses;
 
 namespace WebServer.demo
-{ 
+{
     public class StartUp
     {
         public static void Main()

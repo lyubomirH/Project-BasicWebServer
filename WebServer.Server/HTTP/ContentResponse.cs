@@ -9,7 +9,7 @@ namespace WebServer.Server.HTTP
 {
     public class ContentResponse : Response
     {
-        public ContentResponse(string content, string contentType) 
+        public ContentResponse(string content, string contentType)
             : base(StatusCode.OK)
         {
             Guard.AgainstNull(content);
@@ -21,10 +21,10 @@ namespace WebServer.Server.HTTP
 
         public override string ToString()
         {
-            if(this.Body != null)
+            if (this.Body != null)
             {
                 var contentLength = Encoding.UTF8.GetByteCount(this.Body).ToString();
-                this.Headers.Add(Header.ContentLength, contentLength)
+                this.Headers.Add(Header.ContentLength, contentLength);
 
             }
             return base.ToString();

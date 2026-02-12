@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Runtime.CompilerServices;
-using System.Text;
-using WebServer.Server.Common;
+﻿using WebServer.Server.Common;
 using WebServer.Server.Contracts;
 using WebServer.Server.HTTP_Request;
 using WebServer.Server.Responses;
@@ -41,12 +37,12 @@ namespace WebServer.Server.HTTP
         //    _ => throw new InvalidOperationException(
         //         $"Method '{method}' is not supported.")
         {
-            switch (method) 
+            switch (method)
             {
                 case Method.Get:
                     return MapGet(url, response);
-                case Method.Post: 
-                    return MapPost(url, response); 
+                case Method.Post:
+                    return MapPost(url, response);
                 default:
                     throw new InvalidOperationException($"Method '{method}' is not supported.");
             }
@@ -55,7 +51,7 @@ namespace WebServer.Server.HTTP
 
         public IRoutingTable MapGet(string url, Response response)
         {
-            Guard.AgainstNull( url , nameof(url) );
+            Guard.AgainstNull(url, nameof(url));
             Guard.AgainstNull(response, nameof(response));
             this.routes[Method.Post][url] = response;
 
@@ -67,7 +63,7 @@ namespace WebServer.Server.HTTP
             Guard.AgainstNull(url, nameof(url));
             Guard.AgainstNull(response, nameof(response));
             this.routes[Method.Post][url] = response;
-            
+
             return this;
         }
 

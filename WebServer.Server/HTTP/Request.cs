@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace WebServer.Server.HTTP_Request
+﻿namespace WebServer.Server.HTTP_Request
 {
     public class Request
     {
@@ -48,12 +44,12 @@ namespace WebServer.Server.HTTP_Request
             var headers = new HeaderCollection();
             foreach (var headerLine in headerLines)
             {
-                if(headerLine == string.Empty)
+                if (headerLine == string.Empty)
                 {
                     break;
                 }
                 var headerParts = headerLine.Split(":", 2);
-                if(headerParts.Length != 2)
+                if (headerParts.Length != 2)
                 {
                     throw new InvalidOperationException("Request is not valid.");
 
