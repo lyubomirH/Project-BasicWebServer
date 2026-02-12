@@ -23,9 +23,9 @@ namespace WebServer.Server.HTTP_Request
                 result.AppendLine(header.ToString());
             }
             result.AppendLine();
-            if (!string.IsNullOrEmpty(this.Body))
+            if (!string.IsNullOrWhiteSpace(this.Body))
             {
-                result.AppendLine(this.Body);
+                result.Append(this.Body);
             }
             return result.ToString();
         }
