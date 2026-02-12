@@ -8,9 +8,9 @@ namespace WebServer.demo
         public static void Main()
         {
             var server = new HttpServer(routes =>
-            {
+            {                                    //Други проблеми може да дойдат от Extensions
                 routes
-                .MapGet("/", new TextResponse("Hello from the server!"))     // Единствено не работи
+                .MapGet("/", new TextResponse("Hello from the server!"))    // Единствено не работи
                 .MapGet("/HTML", new HtmlResponse("<h1>HTML response</h1>"))
                 .MapGet("/Redirect", new RedirectResponse("https://softuni.org/"));
             });
