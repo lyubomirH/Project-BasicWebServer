@@ -49,7 +49,7 @@ namespace WebServer.Server
                 var requestText = this.ReadRequest(networkStream);
                 Console.WriteLine(requestText);
                 var request = Request.Parse(requestText);
-                var response = routingTable.MatchRequest(request);
+                var response = routingTable.MatchRequest(request); //
                 WriteResponse(networkStream, response);
                 connection.Close();
             }

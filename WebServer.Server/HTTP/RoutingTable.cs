@@ -53,7 +53,7 @@ namespace WebServer.Server.HTTP
         {
             Guard.AgainstNull(url, nameof(url));
             Guard.AgainstNull(response, nameof(response));
-            this.routes[Method.Post][url] = response;
+            this.routes[Method.Get][url] = response;
 
             return this;
         }
