@@ -33,7 +33,6 @@ namespace WebServer.Server
         public HttpServer(int port , Action<IRoutingTable> routes)
             : this("127.0.0.1", port, routes)
         {
-
         }
 
         public HttpServer(Action<IRoutingTable> routingTable)
