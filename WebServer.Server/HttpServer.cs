@@ -46,14 +46,17 @@ namespace WebServer.Server
                 var connection = serverListener.AcceptTcpClient();
                 var networkStream = connection.GetStream();
                 var requestText = this.ReadRequest(networkStream);
-                Console.WriteLine(requestText);
-                var request = Request.Parse(requestText);
-                var response = routingTable.MatchRequest(request);
-                if (response.PreRenderAction != null)
+                if (requestText != "")
                 {
-                    response.PreRenderAction(request, response);
-                }
-                WriteResponse(networkStream, response);
+                    Console.WriteLine(requestText);
+                    var request = Request.Parse(requestText);
+                    var response = routingTable.MatchRequest(request);
+                    if (response.PreRenderAction != null)
+                    {
+                        response.PreRenderAction(request, response);
+                    }
+                    WriteResponse(networkStream, response);
+                } 
                 connection.Close();
             }
         }
