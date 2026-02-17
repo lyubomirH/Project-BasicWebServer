@@ -1,5 +1,6 @@
 ﻿using WebServer.Server;
 using WebServer.Server.Responses;
+using WebServer.Server.Views;
 
 namespace WebServer.demo
 {
@@ -8,11 +9,12 @@ namespace WebServer.demo
         public static void Main()
         {
             var server = new HttpServer(routes =>
-            {                                                                        //Други проблеми може да дойдат от Extensions
+            {                                                                        
                 routes
-                .MapGet("/", new TextResponse("Hello from the server!"))             // Проблем при търсене на един и същ URL Програмата гърми
-                .MapGet("/HTML", new HtmlResponse("<h1>HTML response</h1>"))         //
-                .MapGet("/Redirect", new RedirectResponse("https://softuni.org/"));  //
+                .MapGet("/", new TextResponse("Hello from the server!"))
+                .MapGet("/HTML", new HtmlResponse("<h1>HTML response</h1>"))
+                .MapGet("/Redirect", new RedirectResponse("https://softuni.org/"))
+                .MapGet("/login", new HtmlResponse(Form.HTML));  
             });
             server.Start();
         }

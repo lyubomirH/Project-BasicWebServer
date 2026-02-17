@@ -13,7 +13,7 @@ namespace WebServer.Server.HTTP_Request
         public int Count => this.headers.Count;
         public void Add(string name, string value)
         {
-            if (this.headers.ContainsKey(name))
+            if (!this.headers.ContainsKey(name))
             {
                 var headers = new Header(name, value);
                 this.headers.Add(name, headers);
