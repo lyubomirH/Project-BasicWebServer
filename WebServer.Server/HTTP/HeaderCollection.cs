@@ -13,8 +13,11 @@ namespace WebServer.Server.HTTP_Request
         public int Count => this.headers.Count;
         public void Add(string name, string value)
         {
-            var headers = new Header(name, value);
-            this.headers.Add(name, headers);
+            if (this.headers.ContainsKey(name))
+            {
+                var headers = new Header(name, value);
+                this.headers.Add(name, headers);
+            }
         }
 
         public IEnumerator<Header> GetEnumerator()

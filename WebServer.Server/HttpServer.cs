@@ -47,10 +47,13 @@ namespace WebServer.Server
                 var connection = serverListener.AcceptTcpClient();
                 var networkStream = connection.GetStream();
                 var requestText = this.ReadRequest(networkStream);
-                Console.WriteLine(requestText);
-                var request = Request.Parse(requestText);
-                var response = routingTable.MatchRequest(request); //
-                WriteResponse(networkStream, response);
+                if (requestText != "")
+                {
+                    Console.WriteLine(requestText);
+                    var request = Request.Parse(requestText);
+                    var response = routingTable.MatchRequest(request); 
+                    WriteResponse(networkStream, response);
+                }                                                       
                 connection.Close();
             }
         }
