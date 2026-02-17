@@ -10,5 +10,5 @@ namespace WebServer.Server.Responses
              : base(text, ContentType.PlainText, preRenderAction)
         {
         }
-    }  //21
+    }
 }
