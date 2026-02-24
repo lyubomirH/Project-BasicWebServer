@@ -20,7 +20,7 @@ namespace WebServer.Server.Responses
         {
             if (File.Exists(FileName))
             {
-                Body = File.ReadAllTextAsync(FileName).Result;
+                Body = File.ReadAllText(FileName);
                 var fileBytesCount = new FileInfo(FileName).Length;
                 this.Headers.Add(Header.ContentLength, fileBytesCount.ToString());
                 this.Headers.Add(Header.ContentDisposition, $"attachment: filename=\"{this.FileName}\"");
