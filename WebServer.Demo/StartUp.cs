@@ -8,7 +8,7 @@ namespace WebServer.demo
 {
     public class StartUp
     {
-        public static void Main()
+        public async Task Main()
         {
             var server = new HttpServer(routes =>
             {
@@ -20,7 +20,7 @@ namespace WebServer.demo
                 .MapPost("/login", new TextResponse("", AddFormDataAction));
                 
             });
-            server.Start();
+            await server.Start();
         }
         private static void AddFormDataAction(
             Request request, Response response)
