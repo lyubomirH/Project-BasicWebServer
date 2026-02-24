@@ -8,18 +8,18 @@ namespace WebServer.demo
 {
     public class StartUp
     {
-        public async Task Main()
+        public static async Task Main()
         {
             await DownloadWebAsTextFile(Form.FileName,
                 new string[] { "https://judge.softuni.org/", "https://softuni.org/" });
             var server = new HttpServer(routes =>
             {
                 routes
-                .MapGet("/", new TextResponse("Hello from the server!"))
-                .MapGet("/HTML", new HtmlResponse("<h1>HTML response</h1>"))
-                .MapGet("/Redirect", new RedirectResponse("https://softuni.org/"))
-                .MapGet("/login", new HtmlResponse(Form.HTML))
-                .MapPost("/login", new TextResponse("", AddFormDataAction))
+                //.MapGet("/", new TextResponse("Hello from the server!"))
+                //.MapGet("/HTML", new HtmlResponse("<h1>HTML response</h1>"))
+                //.MapGet("/Redirect", new RedirectResponse("https://softuni.org/"))
+                //.MapGet("/login", new HtmlResponse(Form.HTML))
+                //.MapPost("/login", new TextResponse("", AddFormDataAction))
                 .MapGet("/Content", new HtmlResponse(Form.DownloadForm))
                 .MapPost("/Content", new TextFileResponse(Form.FileName));
                 
