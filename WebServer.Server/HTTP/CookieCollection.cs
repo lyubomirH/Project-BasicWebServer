@@ -16,14 +16,17 @@ namespace WebServer.Server.HTTP
 
         public string this[string name]
         {
-            
+             cookies[name].Value;
         }
         public void Add(string name, string value)
         {
             cookies[name] = new Cookie(name, value);
         }
 
-        public bool
+        public bool Contains(string name)
+        {
+            return cookies.ContainsKey(name);
+        }
         public IEnumerator<Cookie> GetEnumerator()
         {
             return cookies.Values.GetEnumerator();
