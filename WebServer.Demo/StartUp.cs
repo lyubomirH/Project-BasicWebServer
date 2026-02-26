@@ -76,7 +76,7 @@ namespace WebServer.demo
                 var cookieText = new StringBuilder();
                 cookieText.AppendLine("<h1>Cookies</h1>");
 
-                cookieText.Append("<table border='1'><th>Name</th><th>Value</th></th>");
+                cookieText.Append("<table border='1'><tr><th>Name</th><th>Value</th></tr>");
                 foreach(var cookie in request.Cookies)
                 {
                     cookieText.Append("<tr>");
@@ -90,9 +90,7 @@ namespace WebServer.demo
             else
             {
                 bodyText = "<h1>Cookies set!</h1>";
-            }
-            if (!requestHasCookies)
-            {
+
                 response.Cookies.Add("My-Cookie", "My-Value");
                 response.Cookies.Add("My-Second-Cookie", "My-Second-Value");
             }
