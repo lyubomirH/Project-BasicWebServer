@@ -1,4 +1,7 @@
 ﻿using System.Runtime.CompilerServices;
+using System.Security.AccessControl;
+using System.Text;
+using System.Web;
 using WebServer.Server;
 using WebServer.Server.HTTP_Request;
 using WebServer.Server.Responses;
@@ -62,6 +65,37 @@ namespace WebServer.demo
                 responses);
 
             await File.WriteAllTextAsync(fileName, responsesString);
+        }
+
+        private static void AddCookiesAction(Request request, Response response)
+        {
+            var requestHasCookies = request.Cookies.Any();
+            var bodyText = "";
+            if (requestHasCookies)
+            {
+                var cookieText = new StringBuilder();
+                cookieText.AppendLine("<h1>Cookies</h1>");
+
+                cookieText.Append("<table border='1'><th>Name</th><th>Value</th></th>");
+                foreach(var cookie in request.Cookies)
+                {
+                    cookieText.Append("<tr>");
+                    cookieText.Append($"<td>{HttpUtility.HtmlEncode(cookie.Name)}</td>");
+                    cookieText.Append($"<td>{HttpUtility.HtmlEncode(cookie.Value)}</td>");
+                    cookieText.Append("</tr>");
+                }
+                cookieText.Append("</table>");
+                bodyText = cookieText.ToString();
+            }
+            else
+            {
+                bodyText = "<h1>Cookies set!</h1>";
+            }
+            if (!requestHasCookies)
+            {
+                response.Cookies.Add("My-Cookie", "My-Value");
+                response.Cookies.Add("My-Second-Cookie", "My-Second-Value");
+            }
         }
 
     }

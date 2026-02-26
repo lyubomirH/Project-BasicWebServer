@@ -1,5 +1,5 @@
-﻿using System.Net;
-using System.Text;
+﻿using System.Text;
+using WebServer.Server.HTTP;
 
 namespace WebServer.Server.HTTP_Request
 {
