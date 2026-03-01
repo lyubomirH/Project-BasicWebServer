@@ -1,5 +1,4 @@
-﻿using System.Runtime.CompilerServices;
-using System.Security.AccessControl;
+﻿
 using System.Text;
 using System.Web;
 using WebServer.Server;
@@ -30,14 +29,13 @@ namespace WebServer.demo
                 .MapPost("/Content", new TextFileResponse(Form.FileName))
                 .MapGet("/Cookies", new HtmlResponse("", AddCookiesAction))
                 .MapGet("/Session", new TextResponse("", DisplaySessionInfoAction))
-                .MapGet("/login", new HtmlResponse(LoginPage.LoginForm))
-                .MapPost("/login", new HtmlResponse("", LoginAction))
-                .MapGet("/Logout", new HtmlResponse("", LogoutAction));
+                .MapGet("/Login", new HtmlResponse(LoginPage.LoginForm))
+                .MapPost("/Login", new HtmlResponse("", LoginAction))
+                .MapGet("/Logout", new HtmlResponse("", LogoutAction))
+                .MapGet("/UserProfile", new HtmlResponse("", GetUserDataAction));
             });
             await server.Start();
         }
-
-        // p.32 => Implement "GET" for "/UserProfile"
 
         private static void AddFormDataAction(
             Request request, Response response)
@@ -153,6 +151,21 @@ namespace WebServer.demo
 
             response.Body = "";
             response.Body += "<h3>Logged out successfully!</h3>";
+        }
+        private static void GetUserDataAction(Request request, Response response)
+        {
+            if (request.Session.ContainsKey(Session.SessionUserKey))
+            {
+                response.Body = "";
+                response.Body += $"<h3>Currently logged-in user " +
+                    $"is with username '{Username}'</h3>";
+            }
+            else
+            {
+                response.Body = "";
+                response.Body += "<h3>You should first log in" +
+                    "- <a href='/Login'>Login</a></h3>";
+            }
         }
     }
 }
