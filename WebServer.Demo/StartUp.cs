@@ -130,8 +130,8 @@ namespace WebServer.demo
 
             var usernameMatches = request.FromData["Username"] == Username;     //!
             var passworMatches = request.FromData["Possword"] == Password;      //!
-        
-            if(usernameMatches && passworMatches)
+
+            if (usernameMatches && passworMatches)                   //don't enter
             {
                 request.Session[Session.SessionUserKey] = "MyUserId";
                 response.Cookies.Add(Session.SessionCookieName, request.Session.Id);
