@@ -129,7 +129,7 @@ namespace WebServer.demo
             var bodyText = "";
 
             var usernameMatches = request.FromData["Username"] == Username;     //!
-            var passworMatches = request.FromData["Possword"] == Password;      //!
+            var passworMatches = request.FromData["Password"] == Password;      //!
 
             if (usernameMatches && passworMatches)                   //don't enter
             {
